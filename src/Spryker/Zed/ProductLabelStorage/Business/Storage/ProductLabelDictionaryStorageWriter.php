@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Listener;
+namespace Spryker\Zed\ProductLabelStorage\Business\Storage;
 
 use ArrayObject;
 use DateTime;
@@ -13,19 +13,35 @@ use Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer;
 use Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributes;
 use Orm\Zed\ProductLabelStorage\Persistence\SpyProductLabelDictionaryStorage;
-use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ProductLabel\Persistence\Propel\SpyProductLabel;
+use Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageQueryContainerInterface;
 
-/**
- * @method \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageQueryContainerInterface getQueryContainer()
- * @method \Spryker\Zed\ProductLabelStorage\Communication\ProductLabelStorageCommunicationFactory getFactory()
- */
-class AbstractProductLabelDictionaryStorageListener extends AbstractPlugin
+class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStorageWriterInterface
 {
+    /**
+     * @var \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageQueryContainerInterface
+     */
+    protected $queryContainer;
+
+    /**
+     * @var bool
+     */
+    protected $isSendingToQueue = true;
+
+    /**
+     * @param \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageQueryContainerInterface $queryContainer
+     * @param bool $isSendingToQueue
+     */
+    public function __construct(ProductLabelStorageQueryContainerInterface $queryContainer, $isSendingToQueue)
+    {
+        $this->queryContainer = $queryContainer;
+        $this->isSendingToQueue = $isSendingToQueue;
+    }
+
     /**
      * @return void
      */
-    protected function publish()
+    public function publish()
     {
         $spyProductLabelLocalizedAttributeEntities = $this->findProductLabelLocalizedEntities();
         $productLabelDictionaryItems = [];
@@ -48,7 +64,7 @@ class AbstractProductLabelDictionaryStorageListener extends AbstractPlugin
     /**
      * @return void
      */
-    protected function unpublish()
+    public function unpublish()
     {
         $this->deleteStorageData();
     }
@@ -104,8 +120,8 @@ class AbstractProductLabelDictionaryStorageListener extends AbstractPlugin
         }
 
         $spyProductLabelStorageEntity->setData($productLabelDictionaryStorageTransfer->modifiedToArray());
-        $spyProductLabelStorageEntity->setStore($this->getStoreName());
         $spyProductLabelStorageEntity->setLocale($localeName);
+        $spyProductLabelStorageEntity->setIsSendingToQueue($this->isSendingToQueue);
         $spyProductLabelStorageEntity->save();
     }
 
@@ -114,7 +130,7 @@ class AbstractProductLabelDictionaryStorageListener extends AbstractPlugin
      */
     protected function findProductLabelLocalizedEntities()
     {
-        return $this->getQueryContainer()->queryProductLabelLocalizedAttributes()->find();
+        return $this->queryContainer->queryProductLabelLocalizedAttributes()->find();
     }
 
     /**
@@ -141,21 +157,13 @@ class AbstractProductLabelDictionaryStorageListener extends AbstractPlugin
      */
     protected function findProductLabelDictionaryStorageEntities()
     {
-        $productAbstractStorageEntities = $this->getQueryContainer()->queryProductLabelDictionaryStorage()->find();
+        $productAbstractStorageEntities = $this->queryContainer->queryProductLabelDictionaryStorage()->find();
         $productAbstractStorageEntitiesByIdAndLocale = [];
         foreach ($productAbstractStorageEntities as $productAbstractStorageEntity) {
             $productAbstractStorageEntitiesByIdAndLocale[$productAbstractStorageEntity->getLocale()] = $productAbstractStorageEntity;
         }
 
         return $productAbstractStorageEntitiesByIdAndLocale;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getStoreName()
-    {
-        return $this->getFactory()->getStore()->getStoreName();
     }
 
     /**
