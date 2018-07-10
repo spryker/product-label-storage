@@ -19,7 +19,7 @@ use Spryker\Zed\ProductLabel\Persistence\Propel\SpyProductLabelProductAbstractQu
  * @method \Spryker\Zed\ProductLabelStorage\Business\ProductLabelStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductLabelStorage\Communication\ProductLabelStorageCommunicationFactory getFactory()
  */
-class ProductAbstractLabelEventResourcePlugin extends AbstractPlugin implements EventResourceQueryContainerPluginInterface
+class ProductAbstractLabelEventResourceQueryContainerPlugin extends AbstractPlugin implements EventResourceQueryContainerPluginInterface
 {
     /**
      * Specification:

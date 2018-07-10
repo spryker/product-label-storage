@@ -17,7 +17,7 @@ use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
  * @method \Spryker\Zed\ProductLabelStorage\Business\ProductLabelStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductLabelStorage\Communication\ProductLabelStorageCommunicationFactory getFactory()
  */
-class ProductLabelDictionaryEventResourcePlugin extends AbstractPlugin implements EventResourceQueryContainerPluginInterface
+class ProductLabelDictionaryEventResourceQueryContainerPlugin extends AbstractPlugin implements EventResourceQueryContainerPluginInterface
 {
     /**
      * Specification:
