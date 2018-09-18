@@ -19,6 +19,6 @@ class ProductLabelStorageConfig extends AbstractBundleConfig
      */
     public static function isCollectorCompatibilityMode(): bool
     {
-        return true;
+        return false;
     }
 }
