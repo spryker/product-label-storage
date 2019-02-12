@@ -10,22 +10,21 @@ namespace Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Listener;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery;
 use Spryker\Zed\Event\Dependency\Plugin\EventBulkHandlerInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
 use Spryker\Zed\PropelOrm\Business\Transaction\DatabaseTransactionHandlerTrait;
 
 /**
- * @deprecated Use `\Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Listener\ProductLabelDictionaryStoragePublishListener` and `\Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Listener\ProductLabelDictionaryStorageUnpublishListener` instead.
- *
  * @method \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageQueryContainerInterface getQueryContainer()
  * @method \Spryker\Zed\ProductLabelStorage\Communication\ProductLabelStorageCommunicationFactory getFactory()
  * @method \Spryker\Zed\ProductLabelStorage\Business\ProductLabelStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\ProductLabelStorage\ProductLabelStorageConfig getConfig()
  */
-class ProductLabelDictionaryStorageListener extends AbstractPlugin implements EventBulkHandlerInterface
+class ProductLabelDictionaryStorageUnpublishListener extends AbstractPlugin implements EventBulkHandlerInterface
 {
     use DatabaseTransactionHandlerTrait;
 
     /**
+     * {@inheritdoc}
+     *
      * @api
      *
      * @param \Generated\Shared\Transfer\EventEntityTransfer[] $eventTransfers
@@ -38,14 +37,8 @@ class ProductLabelDictionaryStorageListener extends AbstractPlugin implements Ev
         $this->preventTransaction();
         $productLabelsCount = SpyProductLabelQuery::create()->count();
 
-        if (($eventName === ProductLabelEvents::ENTITY_SPY_PRODUCT_LABEL_DELETE || $eventName === ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_UNPUBLISH) &&
-            $productLabelsCount === 0
-        ) {
+        if ($productLabelsCount === 0) {
             $this->getFacade()->unpublishLabelDictionary();
-
-            return;
         }
-
-        $this->getFacade()->publishLabelDictionary();
     }
 }
