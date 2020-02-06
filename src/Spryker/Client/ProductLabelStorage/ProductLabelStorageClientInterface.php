@@ -51,14 +51,16 @@ interface ProductLabelStorageClientInterface
 
     /**
      * Specification:
-     * - TODO: add specification
+     * - Retrieves label for given label name, locale and store name.
+     * - Forward compatibility (from the next major): only label assigned with passed $storeName will be returned.
      *
      * @api
      *
      * @param string $labelName
      * @param string $localeName
+     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer|null
      */
-    public function findLabelByName($labelName, $localeName);
+    public function findLabelByName($labelName, $localeName, ?string $storeName = null);
 }

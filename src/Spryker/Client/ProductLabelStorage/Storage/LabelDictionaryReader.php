@@ -69,14 +69,22 @@ class LabelDictionaryReader implements LabelDictionaryReaderInterface
     /**
      * @param string $labelName
      * @param string $localeName
+     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer|null
      */
-    public function findLabelByName($labelName, $localeName)
+    public function findLabelByName($labelName, $localeName, ?string $storeName = null)
     {
+        if (!$storeName) {
+            trigger_error(
+                'Pass the $storeName parameter for the forward compatibility with next major version.',
+                E_USER_DEPRECATED
+            );
+        }
+
         return $this->dictionaryFactory
             ->createDictionaryByName()
-            ->findLabel($labelName, $localeName);
+            ->findLabel($labelName, $localeName, $storeName);
     }
 
     /**

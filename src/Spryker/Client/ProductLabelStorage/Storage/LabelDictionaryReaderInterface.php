@@ -36,8 +36,9 @@ interface LabelDictionaryReaderInterface
     /**
      * @param string $labelName
      * @param string $localeName
+     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer|null
      */
-    public function findLabelByName($labelName, $localeName);
+    public function findLabelByName($labelName, $localeName, ?string $storeName = null);
 }
