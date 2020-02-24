@@ -15,7 +15,7 @@ use Spryker\Client\Kernel\AbstractClient;
 class ProductLabelStorageClient extends AbstractClient implements ProductLabelStorageClientInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -33,7 +33,7 @@ class ProductLabelStorageClient extends AbstractClient implements ProductLabelSt
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -51,20 +51,28 @@ class ProductLabelStorageClient extends AbstractClient implements ProductLabelSt
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
      * @param string $labelName
      * @param string $localeName
+     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer|null
      */
-    public function findLabelByName($labelName, $localeName)
+    public function findLabelByName($labelName, $localeName, ?string $storeName = null)
     {
+        if (!$storeName) {
+            trigger_error(
+                'Pass the $storeName parameter to be forward compatible with the next major version.',
+                E_USER_DEPRECATED
+            );
+        }
+
         return $this
             ->getFactory()
             ->createLabelDictionaryReader()
-            ->findLabelByName($labelName, $localeName);
+            ->findLabelByName($labelName, $localeName, $storeName);
     }
 }
