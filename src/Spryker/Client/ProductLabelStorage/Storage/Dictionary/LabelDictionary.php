@@ -114,7 +114,7 @@ class LabelDictionary implements LabelDictionaryInterface
      */
     protected function readLabelDictionary($localeName)
     {
-        $storageKey = $this->getStorageKey($localeName, $storeName);
+        $storageKey = $this->getStorageKey($localeName);
         $productLabelDictionaryStorageTransfer = new ProductLabelDictionaryStorageTransfer();
 
         $productLabelDictionaryStorageData = $this->storageClient->get($storageKey);
