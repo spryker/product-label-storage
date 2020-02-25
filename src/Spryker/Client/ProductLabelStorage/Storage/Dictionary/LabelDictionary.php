@@ -57,13 +57,12 @@ class LabelDictionary implements LabelDictionaryInterface
     /**
      * @param string $dictionaryKey
      * @param string $localeName
-     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer|null
      */
-    public function findLabel($dictionaryKey, $localeName, ?string $storeName = null)
+    public function findLabel($dictionaryKey, $localeName)
     {
-        $dictionary = $this->getDictionary($localeName, $storeName);
+        $dictionary = $this->getDictionary($localeName);
 
         if (!array_key_exists($dictionaryKey, $dictionary)) {
             return null;
@@ -74,18 +73,17 @@ class LabelDictionary implements LabelDictionaryInterface
 
     /**
      * @param string $localeName
-     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer[]
      */
-    public function getDictionary($localeName, ?string $storeName = null)
+    public function getDictionary($localeName)
     {
         static $labelDictionary = [];
 
         $strategy = get_class($this->dictionaryKeyStrategy);
 
         if (!isset($labelDictionary[$strategy])) {
-            $labelDictionary[$strategy] = $this->initializeLabelDictionary($localeName, $storeName);
+            $labelDictionary[$strategy] = $this->initializeLabelDictionary($localeName);
         }
 
         return $labelDictionary[$strategy];
@@ -93,15 +91,14 @@ class LabelDictionary implements LabelDictionaryInterface
 
     /**
      * @param string $localeName
-     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer[]
      */
-    protected function initializeLabelDictionary($localeName, ?string $storeName = null)
+    protected function initializeLabelDictionary($localeName)
     {
         $labelDictionary = [];
 
-        $productLabelDictionaryStorageTransfer = $this->readLabelDictionary($localeName, $storeName);
+        $productLabelDictionaryStorageTransfer = $this->readLabelDictionary($localeName);
         foreach ($productLabelDictionaryStorageTransfer->getItems() as $productLabelDictionaryItemTransfer) {
             $dictionaryKey = $this->dictionaryKeyStrategy->getDictionaryKey($productLabelDictionaryItemTransfer);
             $labelDictionary[$dictionaryKey] = $productLabelDictionaryItemTransfer;
@@ -112,11 +109,10 @@ class LabelDictionary implements LabelDictionaryInterface
 
     /**
      * @param string $localeName
-     * @param string|null $storeName
      *
      * @return \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer
      */
-    protected function readLabelDictionary($localeName, ?string $storeName = null)
+    protected function readLabelDictionary($localeName)
     {
         $storageKey = $this->getStorageKey($localeName);
         $productLabelDictionaryStorageTransfer = new ProductLabelDictionaryStorageTransfer();
@@ -133,15 +129,14 @@ class LabelDictionary implements LabelDictionaryInterface
 
     /**
      * @param string $localeName
-     * @param string|null $storeName
      *
      * @return string
      */
-    protected function getStorageKey($localeName, ?string $storeName = null)
+    protected function getStorageKey($localeName)
     {
         $synchronizationDataTransfer = new SynchronizationDataTransfer();
         $synchronizationDataTransfer
-            ->setStore($storeName ?? $this->store->getStoreName())
+            ->setStore($this->store->getStoreName())
             ->setLocale($localeName);
 
         return $this->synchronizationService
