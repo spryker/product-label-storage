@@ -11,6 +11,8 @@ use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Client\ProductLabelStorage\Dependency\Service\ProductLabelStorageToUtilEncodingServiceInterface;
 use Spryker\Client\ProductLabelStorage\ProductView\ProductViewExpander;
 use Spryker\Client\ProductLabelStorage\ProductView\ProductViewExpanderInterface;
+use Spryker\Client\ProductLabelStorage\Reader\ProductLabelStorageReader;
+use Spryker\Client\ProductLabelStorage\Reader\ProductLabelStorageReaderInterface;
 use Spryker\Client\ProductLabelStorage\Storage\Dictionary\DictionaryFactory;
 use Spryker\Client\ProductLabelStorage\Storage\LabelDictionaryReader;
 use Spryker\Client\ProductLabelStorage\Storage\ProductAbstractLabelReader;
@@ -84,5 +86,16 @@ class ProductLabelStorageFactory extends AbstractFactory
     public function getStore()
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::STORE);
+    }
+
+    /**
+     * @return \Spryker\Client\ProductLabelStorage\Reader\ProductLabelStorageReaderInterface
+     */
+    public function createProductLabelReader(): ProductLabelStorageReaderInterface
+    {
+        return new ProductLabelStorageReader(
+            $this->createDictionaryFactory(),
+            $this->createProductAbstractLabelStorageReader()
+        );
     }
 }

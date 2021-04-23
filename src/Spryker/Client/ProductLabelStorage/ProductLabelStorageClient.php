@@ -7,6 +7,9 @@
 
 namespace Spryker\Client\ProductLabelStorage;
 
+use Generated\Shared\Transfer\ProductLabelStorageCollectionTransfer;
+use Generated\Shared\Transfer\ProductLabelStorageCriteriaTransfer;
+use Generated\Shared\Transfer\ProductLabelStorageTransfer;
 use Generated\Shared\Transfer\ProductViewTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 
@@ -147,5 +150,33 @@ class ProductLabelStorageClient extends AbstractClient implements ProductLabelSt
         return $this->getFactory()
             ->createProductViewExpander()
             ->expand($productViewTransfer, $locale);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\ProductLabelStorageCriteriaTransfer $productLabelStorageCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\ProductLabelStorageTransfer|null
+     */
+    public function findOne(ProductLabelStorageCriteriaTransfer $productLabelStorageCriteriaTransfer): ?ProductLabelStorageTransfer
+    {
+        return $this->getFactory()->createProductLabelReader()->findProductLabel($productLabelStorageCriteriaTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\ProductLabelStorageCriteriaTransfer $productLabelStorageCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\ProductLabelStorageCollectionTransfer
+     */
+    public function get(ProductLabelStorageCriteriaTransfer $productLabelStorageCriteriaTransfer): ProductLabelStorageCollectionTransfer
+    {
+        return $this->getFactory()->createProductLabelReader()->getProductLabelCollection($productLabelStorageCriteriaTransfer);
     }
 }

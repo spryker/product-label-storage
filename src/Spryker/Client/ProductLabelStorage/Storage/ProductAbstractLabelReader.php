@@ -103,6 +103,27 @@ class ProductAbstractLabelReader implements ProductAbstractLabelReaderInterface
     }
 
     /**
+     * @param int[] $productAbstractIds
+     *
+     * @return int[]
+     */
+    public function getProductAbstractsProductLabelIds(array $productAbstractIds): array
+    {
+        $storageKeys = $this->generateProductLabelStorageKeys($productAbstractIds);
+        $storageDataItems = $this->getProductLabelStorageDataItemsByProductLabelStorageKeys($storageKeys);
+
+        $productLabelIds = [];
+
+        foreach ($storageDataItems as $storageDataItem) {
+            if ($storageDataItem[static::KEY_PRODUCT_LABEL_IDS]) {
+                $productLabelIds[] = $storageDataItem[static::KEY_PRODUCT_LABEL_IDS];
+            }
+        }
+
+        return array_merge(...$productLabelIds);
+    }
+
+    /**
      * @param int[][] $productLabelIdsByProductAbstractIds
      * @param string $localeName
      *
