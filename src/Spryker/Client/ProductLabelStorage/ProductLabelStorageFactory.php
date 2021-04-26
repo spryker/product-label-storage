@@ -8,6 +8,8 @@
 namespace Spryker\Client\ProductLabelStorage;
 
 use Spryker\Client\Kernel\AbstractFactory;
+use Spryker\Client\ProductLabelStorage\Reader\ProductLabelStorageReader;
+use Spryker\Client\ProductLabelStorage\Reader\ProductLabelStorageReaderInterface;
 use Spryker\Client\ProductLabelStorage\Storage\Dictionary\DictionaryFactory;
 use Spryker\Client\ProductLabelStorage\Storage\LabelDictionaryReader;
 use Spryker\Client\ProductLabelStorage\Storage\ProductAbstractLabelReader;
@@ -65,5 +67,16 @@ class ProductLabelStorageFactory extends AbstractFactory
     protected function createDictionaryFactory()
     {
         return new DictionaryFactory();
+    }
+
+    /**
+     * @return \Spryker\Client\ProductLabelStorage\Reader\ProductLabelStorageReaderInterface
+     */
+    public function createProductLabelReader(): ProductLabelStorageReaderInterface
+    {
+        return new ProductLabelStorageReader(
+            $this->createDictionaryFactory(),
+            $this->createProductAbstractLabelStorageReader()
+        );
     }
 }
