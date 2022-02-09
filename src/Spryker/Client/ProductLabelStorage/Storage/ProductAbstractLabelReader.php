@@ -173,10 +173,9 @@ class ProductAbstractLabelReader implements ProductAbstractLabelReaderInterface
     protected function findIdsProductLabelByIdAbstractProduct($idProductAbstract)
     {
         if (ProductLabelStorageConfig::isCollectorCompatibilityMode()) {
-            $clientLocatorClass = Locator::class;
-            /** @var \Generated\Zed\Ide\AutoCompletion&\Spryker\Shared\Kernel\LocatorLocatorInterface $locator */
-            $locator = $clientLocatorClass::getInstance();
-            $productLabelClient = $locator->productLabel()->client();
+            $clientLocatorClassName = Locator::class;
+            /** @var \Spryker\Client\ProductLabel\ProductLabelClientInterface $productLabelClient */
+            $productLabelClient = $clientLocatorClassName::getInstance()->productLabel()->client();
             $collectorData = $productLabelClient->findLabelsByIdProductAbstract(
                 $idProductAbstract,
                 $this->localeClient->getCurrentLocale(),
