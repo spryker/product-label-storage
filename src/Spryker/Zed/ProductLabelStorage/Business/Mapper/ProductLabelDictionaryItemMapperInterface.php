@@ -14,7 +14,7 @@ interface ProductLabelDictionaryItemMapperInterface
     /**
      * @param \Generated\Shared\Transfer\ProductLabelCollectionTransfer $productLabelCollectionTransfer
      *
-     * @return array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>
+     * @return array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>>
      */
     public function mapProductLabelTransfersToProductLabelDictionaryItemTransfersByStoreNameAndLocaleName(
         ProductLabelCollectionTransfer $productLabelCollectionTransfer

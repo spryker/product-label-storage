@@ -93,7 +93,7 @@ class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStora
 
     /**
      * @param array<\Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer> $productLabelDictionaryStorageTransfers
-     * @param array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>> $productLabelDictionaryItemTransfersMappedByStoreAndLocale
+     * @param array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>> $productLabelDictionaryItemTransfersMappedByStoreAndLocale
      *
      * @return array<\Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer>
      */
@@ -120,9 +120,9 @@ class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStora
 
     /**
      * @param array<\Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer> $productLabelDictionaryStorageTransfers
-     * @param array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>> $productLabelDictionaryItemTransfersMappedByStoreAndLocale
+     * @param array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>> $productLabelDictionaryItemTransfersMappedByStoreAndLocale
      *
-     * @return array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>
+     * @return array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>>
      */
     protected function filterAndUpdateExistingProductLabelDictionaryStorageData(
         array $productLabelDictionaryStorageTransfers,
@@ -145,7 +145,7 @@ class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStora
     }
 
     /**
-     * @param array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>> $productLabelDictionaryItemTransfersMappedByStoreAndLocale
+     * @param array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>> $productLabelDictionaryItemTransfersMappedByStoreAndLocale
      *
      * @return void
      */

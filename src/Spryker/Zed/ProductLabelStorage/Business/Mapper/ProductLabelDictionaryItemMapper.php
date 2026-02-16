@@ -30,7 +30,7 @@ class ProductLabelDictionaryItemMapper implements ProductLabelDictionaryItemMapp
     /**
      * @param \Generated\Shared\Transfer\ProductLabelCollectionTransfer $productLabelCollectionTransfer
      *
-     * @return array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>
+     * @return array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>>
      */
     public function mapProductLabelTransfersToProductLabelDictionaryItemTransfersByStoreNameAndLocaleName(
         ProductLabelCollectionTransfer $productLabelCollectionTransfer
@@ -71,9 +71,9 @@ class ProductLabelDictionaryItemMapper implements ProductLabelDictionaryItemMapp
      * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
      * @param string $storeName
      * @param array<string> $storeLocales
-     * @param array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>> $productLabelDictionaryItemTransfers
+     * @param array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>> $productLabelDictionaryItemTransfers
      *
-     * @return array<array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>
+     * @return array<string, array<string, list<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>>
      */
     protected function mapProductLabelTransferToProductLabelDictionaryItemTransfersByStoreNameAndLocaleName(
         ProductLabelTransfer $productLabelTransfer,
