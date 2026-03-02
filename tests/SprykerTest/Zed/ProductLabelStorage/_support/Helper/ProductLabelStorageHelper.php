@@ -20,11 +20,6 @@ class ProductLabelStorageHelper extends Module
 {
     use DataCleanupHelperTrait;
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer
-     */
     public function haveProductLabelDictionaryStorage(array $seedData = []): ProductLabelDictionaryStorageTransfer
     {
         $productLabelDictionaryStorageTransfer = (new ProductLabelDictionaryStorageBuilder($seedData))->build();
@@ -33,11 +28,6 @@ class ProductLabelStorageHelper extends Module
         return $productLabelDictionaryStorageTransfer;
     }
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractLabelStorageTransfer
-     */
     public function haveProductAbstractLabelStorage(array $seedData = []): ProductAbstractLabelStorageTransfer
     {
         $productAbstractLabelTransfer = (new ProductAbstractLabelStorageBuilder($seedData))->build();
@@ -50,11 +40,6 @@ class ProductLabelStorageHelper extends Module
         return $productAbstractLabelTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer
-     */
     protected function persistProductLabelDictionaryStorage(
         ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
     ): ProductLabelDictionaryStorageTransfer {
@@ -70,11 +55,6 @@ class ProductLabelStorageHelper extends Module
         return $productLabelDictionaryStorageTransfer->fromArray($productLabelDictionaryStorageEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer
-     *
-     * @return void
-     */
     protected function persistProductAbstractLabelStorage(ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer): void
     {
         $productAbstractLabelStorageEntity = $this->createProductAbstractLabelStorageQuery()
@@ -85,11 +65,6 @@ class ProductLabelStorageHelper extends Module
         $productAbstractLabelStorageEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer
-     *
-     * @return void
-     */
     protected function cleanupProductAbstractLabelStorage(ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer): void
     {
         $this->createProductAbstractLabelStorageQuery()
@@ -97,17 +72,11 @@ class ProductLabelStorageHelper extends Module
             ->delete();
     }
 
-    /**
-     * @return \Orm\Zed\ProductLabelStorage\Persistence\SpyProductLabelDictionaryStorageQuery
-     */
     protected function createProductLabelDictionaryStorageQuery(): SpyProductLabelDictionaryStorageQuery
     {
         return SpyProductLabelDictionaryStorageQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductLabelStorage\Persistence\SpyProductAbstractLabelStorageQuery
-     */
     protected function createProductAbstractLabelStorageQuery(): SpyProductAbstractLabelStorageQuery
     {
         return SpyProductAbstractLabelStorageQuery::create();

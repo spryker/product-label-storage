@@ -60,9 +60,6 @@ class ProductLabelStorageFacadeTest extends Unit
         });
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteProductLabelDictionaryStorageCollectionEmptiesStorageTable(): void
     {
         //Arrange
@@ -122,9 +119,6 @@ class ProductLabelStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteProductAbstractLabelStorageCollectionByProductAbstractLabelEventsPersistStorageEntity(): void
     {
         //Arrange
@@ -150,9 +144,6 @@ class ProductLabelStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteProductAbstractLabelStorageCollectionByProductLabelProductAbstractEventsPersistStorageEntity(): void
     {
         //Arrange
@@ -179,9 +170,6 @@ class ProductLabelStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductAbstractLabelStorageDataTransfersByIdsWillReturnSynchronizationDataTransfers(): void
     {
         //Arrange
@@ -208,9 +196,6 @@ class ProductLabelStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelDictionaryStorageDataTransfersByIdsWillReturnSynchronizationDataTransfers(): void
     {
         //Arrange
@@ -236,12 +221,6 @@ class ProductLabelStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return \Generated\Shared\Transfer\FilterTransfer
-     */
     protected function createFilterTransfer(int $offset = 0, int $limit = 100): FilterTransfer
     {
         return (new FilterTransfer())

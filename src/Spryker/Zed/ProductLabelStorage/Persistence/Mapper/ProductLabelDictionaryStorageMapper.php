@@ -35,12 +35,6 @@ class ProductLabelDictionaryStorageMapper
         return $productLabelDictionaryStorageTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabelStorage\Persistence\SpyProductLabelDictionaryStorage $productLabelDictionaryStorageEntity
-     * @param \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer
-     */
     public function mapProductLabelDictionaryStorageEntityToProductLabelDictionaryStorageTransfer(
         SpyProductLabelDictionaryStorage $productLabelDictionaryStorageEntity,
         ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
@@ -57,12 +51,6 @@ class ProductLabelDictionaryStorageMapper
         return $productLabelDictionaryStorageTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
-     * @param \Orm\Zed\ProductLabelStorage\Persistence\SpyProductLabelDictionaryStorage $productLabelDictionaryStorageEntity
-     *
-     * @return \Orm\Zed\ProductLabelStorage\Persistence\SpyProductLabelDictionaryStorage
-     */
     public function mapProductLabelDictionaryStorageTransferToProductLabelDictionaryStorageEntity(
         ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer,
         SpyProductLabelDictionaryStorage $productLabelDictionaryStorageEntity
@@ -96,12 +84,6 @@ class ProductLabelDictionaryStorageMapper
         return $productLabelDictionaryCollection;
     }
 
-    /**
-     * @param array $productLabelDictionaryItem
-     * @param \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer $productLabelDictionaryItemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer
-     */
     protected function mapProductLabelDictionaryItemToProductLabelDictionaryItemTransfer(
         array $productLabelDictionaryItem,
         ProductLabelDictionaryItemTransfer $productLabelDictionaryItemTransfer

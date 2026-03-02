@@ -40,33 +40,21 @@ class ProductLabelStoragePersistenceFactory extends AbstractPersistenceFactory
         return SpyProductLabelDictionaryStorageQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Persistence\Mapper\ProductAbstractLabelStorageMapper
-     */
     public function createProductAbstractLabelStorageMapper(): ProductAbstractLabelStorageMapper
     {
         return new ProductAbstractLabelStorageMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Persistence\Mapper\ProductLabelDictionaryStorageMapper
-     */
     public function createProductLabelDictionaryStorageMapper(): ProductLabelDictionaryStorageMapper
     {
         return new ProductLabelDictionaryStorageMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Dependency\QueryContainer\ProductLabelStorageToProductLabelQueryContainerInterface
-     */
     public function getProductLabelQueryContainer(): ProductLabelStorageToProductLabelQueryContainerInterface
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::QUERY_CONTAINER_PRODUCT_LABEL);
     }
 
-    /**
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
-     */
     public function getProductLabelPropelQuery(): SpyProductLabelQuery
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::PROPEL_QUERY_PRODUCT_LABEL);

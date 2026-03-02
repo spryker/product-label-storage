@@ -49,17 +49,11 @@ class ProductLabelStorageFactory extends AbstractFactory
         return new DictionaryFactory();
     }
 
-    /**
-     * @return \Spryker\Client\ProductLabelStorage\ProductView\ProductViewExpanderInterface
-     */
     public function createProductViewExpander(): ProductViewExpanderInterface
     {
         return new ProductViewExpander($this->createProductAbstractLabelStorageReader());
     }
 
-    /**
-     * @return \Spryker\Client\ProductLabelStorage\Dependency\Service\ProductLabelStorageToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): ProductLabelStorageToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::SERVICE_UTIL_ENCODING);
@@ -81,17 +75,11 @@ class ProductLabelStorageFactory extends AbstractFactory
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::SERVICE_SYNCHRONIZATION);
     }
 
-    /**
-     * @return \Spryker\Client\ProductLabelStorage\Dependency\Client\ProductLabelStorageToLocaleClientInterface
-     */
     public function getLocaleClient(): ProductLabelStorageToLocaleClientInterface
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::CLIENT_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Client\ProductLabelStorage\Dependency\Client\ProductLabelStorageToStoreClientInterface
-     */
     public function getStoreClient(): ProductLabelStorageToStoreClientInterface
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::CLIENT_STORE);

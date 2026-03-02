@@ -38,11 +38,6 @@ class LabelDictionary implements LabelDictionaryInterface
      */
     protected static $storageKeyBuilder;
 
-    /**
-     * @param \Spryker\Client\ProductLabelStorage\Dependency\Client\ProductLabelStorageToStorageClientInterface $storageClient
-     * @param \Spryker\Client\ProductLabelStorage\Dependency\Service\ProductLabelStorageToSynchronizationServiceInterface $synchronizationService
-     * @param \Spryker\Client\ProductLabelStorage\Storage\Dictionary\KeyStrategyInterface $dictionaryKeyStrategy
-     */
     public function __construct(
         ProductLabelStorageToStorageClientInterface $storageClient,
         ProductLabelStorageToSynchronizationServiceInterface $synchronizationService,
@@ -176,9 +171,6 @@ class LabelDictionary implements LabelDictionaryInterface
         return $this->getStorageKeyBuilder()->generateKey($synchronizationDataTransfer);
     }
 
-    /**
-     * @return \Spryker\Service\Synchronization\Dependency\Plugin\SynchronizationKeyGeneratorPluginInterface
-     */
     protected function getStorageKeyBuilder(): SynchronizationKeyGeneratorPluginInterface
     {
         if (static::$storageKeyBuilder === null) {

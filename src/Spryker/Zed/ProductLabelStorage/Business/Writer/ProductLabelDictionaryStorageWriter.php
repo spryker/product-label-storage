@@ -41,12 +41,6 @@ class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStora
      */
     protected $productLabelDictionaryItemMapper;
 
-    /**
-     * @param \Spryker\Zed\ProductLabelStorage\Dependency\Facade\ProductLabelStorageToProductLabelFacadeInterface $productLabelFacade
-     * @param \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageRepositoryInterface $productLabelStorageRepository
-     * @param \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageEntityManagerInterface $productLabelStorageEntityManager
-     * @param \Spryker\Zed\ProductLabelStorage\Business\Mapper\ProductLabelDictionaryItemMapper $productLabelDictionaryItemMapper
-     */
     public function __construct(
         ProductLabelStorageToProductLabelFacadeInterface $productLabelFacade,
         ProductLabelStorageRepositoryInterface $productLabelStorageRepository,
@@ -59,9 +53,6 @@ class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStora
         $this->productLabelDictionaryItemMapper = $productLabelDictionaryItemMapper;
     }
 
-    /**
-     * @return void
-     */
     public function writeProductLabelDictionaryStorageCollection(): void
     {
         $productLabelCollectionTransfer = $this->getProductLabelCollection();
@@ -166,9 +157,6 @@ class ProductLabelDictionaryStorageWriter implements ProductLabelDictionaryStora
         }
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductLabelCollectionTransfer
-     */
     protected function getProductLabelCollection(): ProductLabelCollectionTransfer
     {
         $productLabelCriteriaTransfer = (new ProductLabelCriteriaTransfer())

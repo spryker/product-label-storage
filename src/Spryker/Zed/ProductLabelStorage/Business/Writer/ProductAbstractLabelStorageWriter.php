@@ -49,12 +49,6 @@ class ProductAbstractLabelStorageWriter implements ProductAbstractLabelStorageWr
      */
     protected $productLabelStorageEntityManager;
 
-    /**
-     * @param \Spryker\Zed\ProductLabelStorage\Dependency\Facade\ProductLabelStorageToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\ProductLabelStorage\Dependency\Facade\ProductLabelStorageToProductLabelFacadeInterface $productLabelFacade
-     * @param \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageRepositoryInterface $productLabelStorageRepository
-     * @param \Spryker\Zed\ProductLabelStorage\Persistence\ProductLabelStorageEntityManagerInterface $productLabelStorageEntityManager
-     */
     public function __construct(
         ProductLabelStorageToEventBehaviorFacadeInterface $eventBehaviorFacade,
         ProductLabelStorageToProductLabelFacadeInterface $productLabelFacade,

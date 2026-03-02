@@ -17,11 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class ProductLabelStorageEntityManager extends AbstractEntityManager implements ProductLabelStorageEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer
-     *
-     * @return void
-     */
     public function saveProductAbstractLabelStorage(ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer): void
     {
         $productAbstractLabelStorageEntity = $this->getFactory()
@@ -33,9 +28,6 @@ class ProductLabelStorageEntityManager extends AbstractEntityManager implements 
         $productAbstractLabelStorageEntity->save();
     }
 
-    /**
-     * @return void
-     */
     public function deleteAllProductLabelDictionaryStorageEntities(): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $productLabelDictionaryStorageCollection */
@@ -46,11 +38,6 @@ class ProductLabelStorageEntityManager extends AbstractEntityManager implements 
         $productLabelDictionaryStorageCollection->delete();
     }
 
-    /**
-     * @param int $productAbstractId
-     *
-     * @return void
-     */
     public function deleteProductAbstractLabelStorageByProductAbstractId(int $productAbstractId): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $productAbstractLabelStorageCollection */
@@ -62,11 +49,6 @@ class ProductLabelStorageEntityManager extends AbstractEntityManager implements 
         $productAbstractLabelStorageCollection->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
-     *
-     * @return void
-     */
     public function createProductLabelDictionaryStorage(ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer): void
     {
         $productLabelDictionaryStorageEntity = $this->getFactory()->createProductLabelDictionaryStorageMapper()
@@ -78,11 +60,6 @@ class ProductLabelStorageEntityManager extends AbstractEntityManager implements 
         $productLabelDictionaryStorageEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer
-     *
-     * @return void
-     */
     public function updateProductLabelDictionaryStorage(ProductLabelDictionaryStorageTransfer $productLabelDictionaryStorageTransfer): void
     {
         $productLabelDictionaryStorageEntity = $this->getFactory()
@@ -99,11 +76,6 @@ class ProductLabelStorageEntityManager extends AbstractEntityManager implements 
         $productLabelDictionaryStorageEntity->save();
     }
 
-    /**
-     * @param int $idProductLabelDictionary
-     *
-     * @return void
-     */
     public function deleteProductLabelDictionaryStorageById(int $idProductLabelDictionary): void
     {
         $this->getFactory()

@@ -19,9 +19,6 @@ class ProductLabelDictionaryItemMapper implements ProductLabelDictionaryItemMapp
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductLabelStorage\Dependency\Facade\ProductLabelStorageToStoreFacadeInterface $storeFacade
-     */
     public function __construct(ProductLabelStorageToStoreFacadeInterface $storeFacade)
     {
         $this->storeFacade = $storeFacade;
@@ -106,12 +103,6 @@ class ProductLabelDictionaryItemMapper implements ProductLabelDictionaryItemMapp
         return $productLabelDictionaryItemTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     * @param string $storeName
-     *
-     * @return bool
-     */
     protected function hasStoreRelation(ProductLabelTransfer $productLabelTransfer, string $storeName): bool
     {
         foreach ($productLabelTransfer->getStoreRelation()->getStores() as $storeTransfer) {

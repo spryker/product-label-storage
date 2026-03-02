@@ -32,11 +32,6 @@ class ProductLabelStorageBusinessTester extends Actor
 {
     use _generated\ProductLabelStorageBusinessTesterActions;
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return bool
-     */
     public function isProductAbstractLabelStorageRecordExists(int $idProductAbstract): bool
     {
         return $this->createProductAbstractLabelStorageQuery()
@@ -58,25 +53,16 @@ class ProductLabelStorageBusinessTester extends Actor
             ->getData();
     }
 
-    /**
-     * @return \Orm\Zed\ProductLabelStorage\Persistence\SpyProductLabelDictionaryStorageQuery
-     */
     public function createProductLabelDictionaryStorageQuery(): SpyProductLabelDictionaryStorageQuery
     {
         return SpyProductLabelDictionaryStorageQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductLabelStorage\Persistence\SpyProductAbstractLabelStorageQuery
-     */
     public function createProductAbstractLabelStorageQuery(): SpyProductAbstractLabelStorageQuery
     {
         return SpyProductAbstractLabelStorageQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     public function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getLocator()->locale()->facade();

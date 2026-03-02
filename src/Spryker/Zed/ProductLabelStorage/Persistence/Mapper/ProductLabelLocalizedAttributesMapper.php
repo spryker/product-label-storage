@@ -12,12 +12,6 @@ use Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributes;
 
 class ProductLabelLocalizedAttributesMapper
 {
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributes $productLabelLocalizedAttributesEntity
-     * @param \Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer $productLabelLocalizedAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer
-     */
     public function mapProductLabelLocalizedAttributesEntityToProductLabelLocalizedAttributesTransfer(
         SpyProductLabelLocalizedAttributes $productLabelLocalizedAttributesEntity,
         ProductLabelLocalizedAttributesTransfer $productLabelLocalizedAttributesTransfer

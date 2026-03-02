@@ -25,9 +25,6 @@ use Spryker\Zed\ProductLabelStorage\ProductLabelStorageDependencyProvider;
  */
 class ProductLabelStorageBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Business\Writer\ProductLabelDictionaryStorageWriterInterface
-     */
     public function createProductLabelDictionaryStorageWriter(): ProductLabelDictionaryStorageWriterInterface
     {
         return new ProductLabelDictionaryStorageWriter(
@@ -38,9 +35,6 @@ class ProductLabelStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Business\Writer\ProductAbstractLabelStorageWriterInterface
-     */
     public function createProductAbstractLabelStorageWriter(): ProductAbstractLabelStorageWriterInterface
     {
         return new ProductAbstractLabelStorageWriter(
@@ -59,9 +53,6 @@ class ProductLabelStorageBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::FACADE_EVENT_BEHAVIOR);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Dependency\Facade\ProductLabelStorageToProductLabelFacadeInterface
-     */
     public function getProductLabelFacade(): ProductLabelStorageToProductLabelFacadeInterface
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::FACADE_PRODUCT_LABEL);
@@ -75,9 +66,6 @@ class ProductLabelStorageBusinessFactory extends AbstractBusinessFactory
         return new ProductLabelDictionaryItemMapper($this->getStoreFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Dependency\Facade\ProductLabelStorageToStoreFacadeInterface
-     */
     public function getStoreFacade(): ProductLabelStorageToStoreFacadeInterface
     {
         return $this->getProvidedDependency(ProductLabelStorageDependencyProvider::FACADE_STORE);

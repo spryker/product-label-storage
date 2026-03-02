@@ -33,12 +33,6 @@ class ProductAbstractLabelStorageMapper
         return $productAbstractLabelStorageTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabelStorage\Persistence\SpyProductAbstractLabelStorage $productAbstractLabelStorageEntity
-     * @param \Generated\Shared\Transfer\ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractLabelStorageTransfer
-     */
     protected function mapProductAbstractLabelStorageEntityToProductAbstractLabelStorageTransfer(
         SpyProductAbstractLabelStorage $productAbstractLabelStorageEntity,
         ProductAbstractLabelStorageTransfer $productAbstractLabelStorageTransfer

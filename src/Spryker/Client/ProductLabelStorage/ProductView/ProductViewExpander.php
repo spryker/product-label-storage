@@ -18,21 +18,11 @@ class ProductViewExpander implements ProductViewExpanderInterface
      */
     protected $productAbstractLabelReader;
 
-    /**
-     * @param \Spryker\Client\ProductLabelStorage\Storage\ProductAbstractLabelReaderInterface $productAbstractLabelReader
-     */
     public function __construct(ProductAbstractLabelReaderInterface $productAbstractLabelReader)
     {
         $this->productAbstractLabelReader = $productAbstractLabelReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     * @param string $storeName
-     *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer
-     */
     public function expand(ProductViewTransfer $productViewTransfer, string $localeName, string $storeName): ProductViewTransfer
     {
         $productViewTransfer->requireIdProductAbstract();

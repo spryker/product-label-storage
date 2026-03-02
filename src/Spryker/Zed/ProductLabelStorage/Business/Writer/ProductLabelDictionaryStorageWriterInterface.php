@@ -9,8 +9,5 @@ namespace Spryker\Zed\ProductLabelStorage\Business\Writer;
 
 interface ProductLabelDictionaryStorageWriterInterface
 {
-    /**
-     * @return void
-     */
     public function writeProductLabelDictionaryStorageCollection(): void;
 }

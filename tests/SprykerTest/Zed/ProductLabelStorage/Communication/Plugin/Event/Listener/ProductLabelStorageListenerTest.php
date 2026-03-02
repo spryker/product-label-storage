@@ -84,9 +84,6 @@ class ProductLabelStorageListenerTest extends Unit
      */
     protected $productAbstractTransfer;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -112,9 +109,6 @@ class ProductLabelStorageListenerTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testProductLabelPublishStorageListenerStoreData(): void
     {
         // Arrange
@@ -135,9 +129,6 @@ class ProductLabelStorageListenerTest extends Unit
         $this->assertProductAbstractLabelStorage($beforeCount);
     }
 
-    /**
-     * @return void
-     */
     public function testProductLabelStorageListenerStoreData(): void
     {
         // Arrange
@@ -160,9 +151,6 @@ class ProductLabelStorageListenerTest extends Unit
         $this->assertProductAbstractLabelStorage($beforeCount);
     }
 
-    /**
-     * @return void
-     */
     public function testProductLabelDictionaryStorageListenerStoreData(): void
     {
         // Arrange
@@ -208,9 +196,6 @@ class ProductLabelStorageListenerTest extends Unit
         $this->assertCount($labelsCount, $data['items'], 'Number of items does not equals to an expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testProductLabelDictionaryStoragePublishListener(): void
     {
         // Arrange
@@ -256,9 +241,6 @@ class ProductLabelStorageListenerTest extends Unit
         $this->assertCount($labelsCount, $data['items'], 'Number of items does not equals to an expected value.');
     }
 
-    /**
-     * @return void
-     */
     public function testProductLabelDictionaryStorageUnpublishListener(): void
     {
         // Arrange
@@ -289,11 +271,6 @@ class ProductLabelStorageListenerTest extends Unit
         );
     }
 
-    /**
-     * @param int $beforeCount
-     *
-     * @return void
-     */
     protected function assertProductAbstractLabelStorage(int $beforeCount): void
     {
         $productLabelStorageCount = $this->tester->getProductAbstractLabelStorageCount();
@@ -306,9 +283,6 @@ class ProductLabelStorageListenerTest extends Unit
         $this->assertCount(1, $data['product_label_ids']);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabelStorage\Business\ProductLabelStorageFacade
-     */
     protected function getProductLabelStorageFacade(): ProductLabelStorageFacade
     {
         $factory = new ProductLabelStorageBusinessFactory();
@@ -320,17 +294,11 @@ class ProductLabelStorageListenerTest extends Unit
         return $facade;
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface
-     */
     protected function getProductLabelFacade(): ProductLabelFacadeInterface
     {
         return $this->tester->getLocator()->productLabel()->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     protected function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->tester->getLocator()->locale()->facade();

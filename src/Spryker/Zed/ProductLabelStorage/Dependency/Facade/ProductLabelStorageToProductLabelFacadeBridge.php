@@ -46,11 +46,6 @@ class ProductLabelStorageToProductLabelFacadeBridge implements ProductLabelStora
         return $this->productLabelFacade->getProductLabelProductAbstractsByFilter($filterTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelCollectionTransfer
-     */
     public function getProductLabelCollection(
         ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
     ): ProductLabelCollectionTransfer {

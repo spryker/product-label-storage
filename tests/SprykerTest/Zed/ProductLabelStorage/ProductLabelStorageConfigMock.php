@@ -11,9 +11,6 @@ use Spryker\Zed\ProductLabelStorage\ProductLabelStorageConfig;
 
 class ProductLabelStorageConfigMock extends ProductLabelStorageConfig
 {
-    /**
-     * @return bool
-     */
     public function isSendingToQueue(): bool
     {
         return false;

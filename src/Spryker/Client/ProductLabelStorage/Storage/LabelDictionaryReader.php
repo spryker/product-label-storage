@@ -17,9 +17,6 @@ class LabelDictionaryReader implements LabelDictionaryReaderInterface
      */
     protected $dictionaryFactory;
 
-    /**
-     * @param \Spryker\Client\ProductLabelStorage\Storage\Dictionary\DictionaryFactory $dictionaryFactory
-     */
     public function __construct(DictionaryFactory $dictionaryFactory)
     {
         $this->dictionaryFactory = $dictionaryFactory;

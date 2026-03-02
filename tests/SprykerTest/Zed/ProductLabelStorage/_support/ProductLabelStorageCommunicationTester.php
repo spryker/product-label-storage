@@ -32,19 +32,11 @@ class ProductLabelStorageCommunicationTester extends Actor
 {
     use _generated\ProductLabelStorageCommunicationTesterActions;
 
-    /**
-     * @return void
-     */
     public function clearProductAbstractLabelStorage(): void
     {
         SpyProductLabelDictionaryStorageQuery::create()->deleteAll();
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     public function deleteProductAbstractLabelStorageByIdProductAbstract(int $idProductAbstract): void
     {
         SpyProductAbstractLabelStorageQuery::create()
@@ -52,20 +44,11 @@ class ProductLabelStorageCommunicationTester extends Actor
             ->delete();
     }
 
-    /**
-     * @return int
-     */
     public function getProductAbstractLabelStorageCount(): int
     {
         return SpyProductAbstractLabelStorageQuery::create()->count();
     }
 
-    /**
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return int
-     */
     public function getProductLabelsCountByStoreNameAndLocaleName(string $storeName, string $localeName): int
     {
         return SpyProductLabelQuery::create()

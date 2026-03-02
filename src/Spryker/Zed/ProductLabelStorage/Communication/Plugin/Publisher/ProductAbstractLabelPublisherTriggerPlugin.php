@@ -77,12 +77,6 @@ class ProductAbstractLabelPublisherTriggerPlugin extends AbstractPlugin implemen
         return SpyProductLabelProductAbstractTableMap::COL_FK_PRODUCT_ABSTRACT;
     }
 
-    /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return \Generated\Shared\Transfer\FilterTransfer
-     */
     protected function createFilterTransfer(int $offset, int $limit): FilterTransfer
     {
         return (new FilterTransfer())

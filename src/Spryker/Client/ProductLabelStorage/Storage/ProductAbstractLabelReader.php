@@ -59,13 +59,6 @@ class ProductAbstractLabelReader implements ProductAbstractLabelReaderInterface
      */
     protected $localeClient;
 
-    /**
-     * @param \Spryker\Client\ProductLabelStorage\Dependency\Client\ProductLabelStorageToStorageClientInterface $storageClient
-     * @param \Spryker\Client\ProductLabelStorage\Dependency\Service\ProductLabelStorageToSynchronizationServiceInterface $synchronizationService
-     * @param \Spryker\Client\ProductLabelStorage\Storage\LabelDictionaryReaderInterface $labelDictionaryReader
-     * @param \Spryker\Client\ProductLabelStorage\Dependency\Service\ProductLabelStorageToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Spryker\Client\ProductLabelStorage\Dependency\Client\ProductLabelStorageToLocaleClientInterface $localeClient
-     */
     public function __construct(
         ProductLabelStorageToStorageClientInterface $storageClient,
         ProductLabelStorageToSynchronizationServiceInterface $synchronizationService,
@@ -269,11 +262,6 @@ class ProductAbstractLabelReader implements ProductAbstractLabelReaderInterface
         return array_filter($productLabelIds);
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return string
-     */
     protected function generateProductLabelStorageKey(int $idProductAbstract): string
     {
         return $this->getStorageKeyBuilder()
@@ -283,9 +271,6 @@ class ProductAbstractLabelReader implements ProductAbstractLabelReaderInterface
             );
     }
 
-    /**
-     * @return \Spryker\Service\Synchronization\Dependency\Plugin\SynchronizationKeyGeneratorPluginInterface
-     */
     protected function getStorageKeyBuilder(): SynchronizationKeyGeneratorPluginInterface
     {
         if (static::$storageKeyBuilder === null) {
