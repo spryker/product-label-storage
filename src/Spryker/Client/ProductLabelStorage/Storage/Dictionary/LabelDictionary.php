@@ -38,6 +38,15 @@ class LabelDictionary implements LabelDictionaryInterface
      */
     protected static $storageKeyBuilder;
 
+    /**
+     * Read once per process and keyed by key strategy, as it has always been. Held on the class
+     * rather than inside the method so that a test lane which rolls its data back can clear it;
+     * a method-level static cannot be reached from outside the method at all.
+     *
+     * @var array<string, array<\Generated\Shared\Transfer\ProductLabelDictionaryItemTransfer>>
+     */
+    protected static array $labelDictionary = [];
+
     public function __construct(
         ProductLabelStorageToStorageClientInterface $storageClient,
         ProductLabelStorageToSynchronizationServiceInterface $synchronizationService,
@@ -74,15 +83,13 @@ class LabelDictionary implements LabelDictionaryInterface
      */
     public function getDictionary($localeName, string $storeName)
     {
-        static $labelDictionary = [];
-
         $strategy = get_class($this->dictionaryKeyStrategy);
 
-        if (!isset($labelDictionary[$strategy])) {
-            $labelDictionary[$strategy] = $this->initializeLabelDictionary($localeName, $storeName);
+        if (!isset(static::$labelDictionary[$strategy])) {
+            static::$labelDictionary[$strategy] = $this->initializeLabelDictionary($localeName, $storeName);
         }
 
-        return $labelDictionary[$strategy];
+        return static::$labelDictionary[$strategy];
     }
 
     /**
