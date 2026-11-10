@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\ProductLabelStorage;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class ProductLabelStorageConfig extends AbstractBundleConfig
+class ProductLabelStorageConfig extends AbstractSharedConfig
 {
     /**
      * Specification
